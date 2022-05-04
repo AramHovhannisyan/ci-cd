@@ -20,10 +20,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Git Clone Our Repo
       - uses: actions/checkout@v3
-
-      # Create ZIP Package For Deploy
+      
       - name: Create .zip Deployment Package
-      - run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
+        run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
