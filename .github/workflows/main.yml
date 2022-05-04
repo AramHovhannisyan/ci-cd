@@ -26,4 +26,4 @@ jobs:
 
       # Create ZIP Package For Deploy
       - name: Create .zip Deployment Package
-        run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
+      - run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
