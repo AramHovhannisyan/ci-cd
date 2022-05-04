@@ -1,0 +1,29 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI-CD-Pipeline-to-aws-elasticBeanStalk
+env:
+  EB_PACKAGE_S3_Bucket_Name: "github-actions-aram-bucket"
+  EB_APPLICATION_NAME: "github-actions"
+  EB_ENVIRONMENT_NAME: "github-actions-env"
+  DEPLOY_PACKAGE_NAME: "node_app_${{ github.sha }}.zip"
+  AWS_REGION_NAME: "us-east-1"
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  my_ci_part:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Git Clone Our Repo
+      - uses: actions/checkout@v3
+
+      # Create ZIP Package For Deploy
+      - name: Create .zip Deployment Package
+        run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
