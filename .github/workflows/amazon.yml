@@ -25,13 +25,5 @@ jobs:
       - name: CreateZipDeploymentPackage
         run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
         
-      - name: ConfigureMyAWSCredentials
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.MY_AWS_ACCESS_KEY }}
-          aws-access-secret-key: ${{ secrets.MY_AWS_SECRET_KEY }}
-          aws-region: ${{ env.AWS_REGION_NAME }}
       
-      - name: CopyDeployPackageToS3Bucket
-        run: aws s3 cp ${{ envDEPLOY_PACKAGE_NAME }} s3://${{ EB_PACKAGE_S3_Bucket_Name }}/
 
