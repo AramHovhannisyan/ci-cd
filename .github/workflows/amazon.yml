@@ -6,7 +6,7 @@ env:
   EB_APPLICATION_NAME: "github-actions"
   EB_ENVIRONMENT_NAME: "github-actions-env"
   DEPLOY_PACKAGE_NAME: "node_app_${{ github.sha }}.zip"
-  AWS_REGION_NAME: "us-east-1"
+  AWS_REGION_NAME: "us-east-2"
 
 # Controls when the workflow will run
 on:
