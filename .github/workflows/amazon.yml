@@ -29,7 +29,10 @@ jobs:
       - name: CreateZipDeploymentPackage
         run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
       
-#       - name: Configure my AWS Credentils
+      - name: Check Github Secrets
+        run: echo ' ${{ secrets.MY_AWS_ACCESS_KEY }}    ${{ secrets.MY_AWS_SECRET_KEY }}     ${{ env.AWS_REGION_NAME }}'
+      
+      - name: Configure my AWS Credentils
       - uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id    : ${{ secrets.MY_AWS_ACCESS_KEY }}
